@@ -1,81 +1,79 @@
 package System;
 
-import java.util.List;
-import java.util.function.Predicate;
 
-record BookRecord (
-         String title,
-         String author,
-         Integer releaseYr,
-         String genre,
-         //in terms of millions for this example
-         Integer copiesSold,
-         double globalRating
- ){}
+import java.util.List;
+import java.util.Map;
 
 public class Main {
     public static void main(String[] args) {
-        List<BookRecord> books = List.of(
-                new BookRecord(
-                        "To Kill a Mockingbird",
-                        "Harper Lee",
-                        1960,
-                        "Fiction",
-                        40,
-                        4.27
+        List<StudentRecord> students = List.of(
+                new StudentRecord(
+                       0001,
+                        "Joe",
+                        "Bloggs",
+                        2,
+                        "Marketing",
+                        List.of(
+                                Map.of("M502",50.6),
+                                Map.of("M556", 60.2),
+                                Map.of("M542",40.23)
+                        )
+
                 ),
-                new BookRecord(
-                        "Harry Potter and the Sorcerer's Stone",
-                        "J.K. Rowling",
-                        1997,
-                        "Fantasy",
-                        120,
-                        2.1
+                new StudentRecord(
+                        0002,
+                        "Jane",
+                        "Doe",
+                        1,
+                        "Computing",
+                        List.of(
+                                Map.of("C502",46.6),
+                                Map.of("C556", 69.3),
+                                Map.of("C542",47.23)
+                        )
+
                 ),
-                new BookRecord(
-                        "The Da Vinci Code",
-                        "Dan Brown",
-                        2003,
-                        "Mystery",
-                        80,
-                        3.84
+                new StudentRecord(
+                        0003,
+                        "Thomas",
+                        "Smith",
+                        2,
+                        "Architecture",
+                        List.of(
+                                Map.of("A502",89.4),
+                                Map.of("A556", 85.6),
+                                Map.of("A542",78.4)
+                        )
+
                 ),
-                new BookRecord(
-                        "The Hunger Games",
-                        "Suzanne Collins",
-                        2008,
-                        "Dystopian",
-                        10,
-                        4.33
+                new StudentRecord(
+                        0004,
+                        "Richard",
+                        "Cox",
+                        3,
+                        "Art",
+                        List.of(
+                                Map.of("Ar502",59.8),
+                                Map.of("Ar556", 92.6),
+                                Map.of("Ar542",95.3)
+                        )
+
                 ),
-                new BookRecord(
-                        "1984",
-                        "George Orwell",
-                        1949,
-                        "Dystopian",
-                        30,
-                        4.19
+                new StudentRecord(
+                        0005,
+                        "Harry",
+                        "Cuts",
+                        1,
+                        "Music",
+                        List.of(
+                                Map.of("Mu502",94.8),
+                                Map.of("Mu556", 28.6),
+                                Map.of("Mu542",59.3)
+                        )
+
                 )
         );
-
-
-
-        Predicate<BookRecord> ratingHigherThan3p5 =
-                b -> b.globalRating() >= 3.5;
-
-        Predicate<BookRecord> releaseBefore2000 =
-                b -> b.releaseYr() < 2000;
-
-
-        System.out.println("Books with a rating higher than 3.5: ");
-        books.stream()
-                .filter(ratingHigherThan3p5)
-                        .forEach(item -> System.out.println(item));
-
-        System.out.println("Books released before 2000: ");
-        books.stream()
-                .filter(releaseBefore2000)
-                .forEach(item -> System.out.println(item));
-
+        students.stream()
+                .forEach(s -> System.out.println(s));
     }
 }

@@ -3,6 +3,8 @@ package System;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
+import java.util.function.Predicate;
 
 public class Main {
     public static void main(String[] args) {
@@ -73,7 +75,25 @@ public class Main {
 
                 )
         );
+        Predicate<StudentRecord> fNameHarry =
+                s -> Objects.equals(s.fName(), "Harry");
+
+        Predicate<StudentRecord> yrOfStudy1 =
+                s -> s.yrOfStudy() == 1;
+
+        // find students with first name harry
         students.stream()
+                .filter(fNameHarry)
+                .forEach(s -> System.out.println(s));
+
+        //find all students in their first yr of study
+        students.stream()
+                .filter(yrOfStudy1)
+                .forEach(s -> System.out.println(s));
+
+        //sorts all students by their last name
+        students.stream()
+                .sorted((p1, p2)->p1.lName().compareTo(p2.lName()))
                 .forEach(s -> System.out.println(s));
     }
 }

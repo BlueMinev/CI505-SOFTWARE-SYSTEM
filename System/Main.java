@@ -1,13 +1,14 @@
 package System;
 
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 public class Main {
     public static void main(String[] args) {
-        List<StudentRecord> students = List.of(
-                new StudentRecord(
+        List<StudentRecord> students = new ArrayList<>();
+                students.add(new StudentRecord(
                         1,
                         "Joe",
                         "Bloggs",
@@ -19,8 +20,8 @@ public class Main {
                                 Map.of("M542",40.23)
                         )
 
-                ),
-                new StudentRecord(
+                ));
+                students.add(new StudentRecord(
                         2,
                         "Jane",
                         "Doe",
@@ -32,8 +33,8 @@ public class Main {
                                 Map.of("C542",47.23)
                         )
 
-                ),
-                new StudentRecord(
+                ));
+                students.add( new StudentRecord(
                         3,
                         "Thomas",
                         "Smith",
@@ -45,8 +46,8 @@ public class Main {
                                 Map.of("A542",78.4)
                         )
 
-                ),
-                new StudentRecord(
+                ));
+                students.add(new StudentRecord(
                         4,
                         "Richard",
                         "Cox",
@@ -58,8 +59,8 @@ public class Main {
                                 Map.of("Ar542",95.3)
                         )
 
-                ),
-                new StudentRecord(
+                ));
+                students.add(new StudentRecord(
                         5,
                         "Harry",
                         "Cuts",
@@ -71,8 +72,8 @@ public class Main {
                                 Map.of("Mu542",59.3)
                         )
 
-                )
-        );
+                ));
+
 
         System.out.println("///////////////////////////////////////");
         // find students with first name harry
@@ -88,6 +89,29 @@ public class Main {
                 .forEach(System.out::println);
 
         System.out.println("///////////////////////////////////////");
+
+        //sorts all students by their last name
+        students.stream()
+                .sorted((p1, p2)->p1.lName().compareTo(p2.lName()))
+                .forEach(System.out::println);
+
+        students.add(
+                new StudentRecord(
+                        6,
+                        "Alrin",
+                        "Acunin",
+                        3,
+                        "Computing",
+                        List.of(
+                                Map.of("C502",79.6),
+                                Map.of("C556", 40.3),
+                                Map.of("C542",60.23)
+                        )
+
+                )
+        );
+
+        System.out.println("Added new student");
 
         //sorts all students by their last name
         students.stream()

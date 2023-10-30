@@ -3,14 +3,12 @@ package System;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
-import java.util.function.Predicate;
 
 public class Main {
     public static void main(String[] args) {
         List<StudentRecord> students = List.of(
                 new StudentRecord(
-                       0001,
+                        1,
                         "Joe",
                         "Bloggs",
                         2,
@@ -23,7 +21,7 @@ public class Main {
 
                 ),
                 new StudentRecord(
-                        0002,
+                        2,
                         "Jane",
                         "Doe",
                         1,
@@ -36,7 +34,7 @@ public class Main {
 
                 ),
                 new StudentRecord(
-                        0003,
+                        3,
                         "Thomas",
                         "Smith",
                         2,
@@ -49,7 +47,7 @@ public class Main {
 
                 ),
                 new StudentRecord(
-                        0004,
+                        4,
                         "Richard",
                         "Cox",
                         3,
@@ -62,7 +60,7 @@ public class Main {
 
                 ),
                 new StudentRecord(
-                        0005,
+                        5,
                         "Harry",
                         "Cuts",
                         1,
@@ -75,25 +73,25 @@ public class Main {
 
                 )
         );
-        Predicate<StudentRecord> fNameHarry =
-                s -> Objects.equals(s.fName(), "Harry");
 
-        Predicate<StudentRecord> yrOfStudy1 =
-                s -> s.yrOfStudy() == 1;
-
+        System.out.println("///////////////////////////////////////");
         // find students with first name harry
         students.stream()
-                .filter(fNameHarry)
-                .forEach(s -> System.out.println(s));
+                .filter(Queries.fNameHarry)
+                .forEach(System.out::println);
+        
+        System.out.println("///////////////////////////////////////");
 
         //find all students in their first yr of study
         students.stream()
-                .filter(yrOfStudy1)
-                .forEach(s -> System.out.println(s));
+                .filter(Queries.yrOfStudy1)
+                .forEach(System.out::println);
+
+        System.out.println("///////////////////////////////////////");
 
         //sorts all students by their last name
         students.stream()
                 .sorted((p1, p2)->p1.lName().compareTo(p2.lName()))
-                .forEach(s -> System.out.println(s));
+                .forEach(System.out::println);
     }
 }

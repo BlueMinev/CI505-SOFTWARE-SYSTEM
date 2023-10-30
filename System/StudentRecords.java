@@ -9,7 +9,7 @@ record StudentRecord(
         String lName,
         Integer yrOfStudy,
         String courseName,
-        List<Map<String, Double>>  modulesWMarks
+        Map<String, Double>  modulesWMarks
         ){}
 
 

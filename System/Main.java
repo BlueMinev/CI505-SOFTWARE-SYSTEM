@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.stream.Stream;
 
 public class Main {
     public static void main(String[] args) {
@@ -15,11 +16,7 @@ public class Main {
                         "Bloggs",
                         2,
                         "Marketing",
-                        List.of(
-                                Map.of("M502",50.6),
-                                Map.of("M556", 60.2),
-                                Map.of("M542",40.23)
-                        )
+                        Map.of("M502",50.6,"M556", 60.2,"M542",40.23)
 
                 ));
                 students.add(new StudentRecord(
@@ -28,11 +25,7 @@ public class Main {
                         "Doe",
                         1,
                         "Computing",
-                        List.of(
-                                Map.of("C502",46.6),
-                                Map.of("C556", 69.3),
-                                Map.of("C542",47.23)
-                        )
+                        Map.of("C502",46.6,"C556", 69.3,"C542",47.23)
 
                 ));
                 students.add( new StudentRecord(
@@ -41,11 +34,7 @@ public class Main {
                         "Smith",
                         2,
                         "Architecture",
-                        List.of(
-                                Map.of("A502",89.4),
-                                Map.of("A556", 85.6),
-                                Map.of("A542",78.4)
-                        )
+                        Map.of("A502",89.4,"A556", 85.6,"A542",78.4)
 
                 ));
                 students.add(new StudentRecord(
@@ -54,11 +43,7 @@ public class Main {
                         "Cox",
                         3,
                         "Art",
-                        List.of(
-                                Map.of("Ar502",59.8),
-                                Map.of("Ar556", 92.6),
-                                Map.of("Ar542",95.3)
-                        )
+                        Map.of("Ar502",59.8,"Ar556", 92.6,"Ar542",95.3)
 
                 ));
                 students.add(new StudentRecord(
@@ -67,11 +52,8 @@ public class Main {
                         "Cuts",
                         1,
                         "Music",
-                        List.of(
-                                Map.of("Mu502",94.8),
-                                Map.of("Mu556", 28.6),
-                                Map.of("Mu542",59.3)
-                        )
+                        Map.of("Mu502",94.8,"Mu556", 28.6,"Mu542",59.3)
+
 
                 ));
 
@@ -96,6 +78,10 @@ public class Main {
                 .sorted((p1, p2)->p1.lName().compareTo(p2.lName()))
                 .forEach(System.out::println);
 
+        // currently working on: getting the values of the map to create an average
+       //students.stream().forEach(student -> student.modulesWMarks().values().stream().average());
+
+
         students.add(
                 new StudentRecord(
                         6,
@@ -103,12 +89,7 @@ public class Main {
                         "Acunin",
                         3,
                         "Computing",
-                        List.of(
-                                Map.of("C502",79.6),
-                                Map.of("C556", 40.3),
-                                Map.of("C542",60.23)
-                        )
-
+                        Map.of("C502",79.6,"C556", 40.3,"C542",60.23)
                 )
         );
 
@@ -134,8 +115,6 @@ public class Main {
                 yrOfStudy = 1;
         }
 
-
-
         System.out.println("Enter Students Course Name");
         String courseName = userInput.nextLine();
 
@@ -147,11 +126,7 @@ public class Main {
                         lName,
                         yrOfStudy,
                         courseName,
-                        List.of(
-                                Map.of("C502",79.6),
-                                Map.of("C556", 40.3),
-                                Map.of("C542",60.23)
-                        )
+                        Map.of("C502",79.6,"C556", 40.3,"C542",60.23)
 
                 )
         );

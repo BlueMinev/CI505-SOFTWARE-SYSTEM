@@ -212,14 +212,20 @@ public class Main {
                     System.out.println("students with a 2:1");
                     students.stream()
                             .filter(s -> s.modulesWMarks().values().stream().reduce(0, (subtotal, element) -> subtotal + element) >= 180)
+                            .filter(s -> s.modulesWMarks().values().stream().reduce(0, (subtotal, element) -> subtotal + element) < 210)
+
                             .forEach(System.out::println);
                     System.out.println("students with a 2:2");
                     students.stream()
                             .filter(s -> s.modulesWMarks().values().stream().reduce(0, (subtotal, element) -> subtotal + element) >= 150)
+                            .filter(s -> s.modulesWMarks().values().stream().reduce(0, (subtotal, element) -> subtotal + element) < 180)
+
                             .forEach(System.out::println);
                     System.out.println("students with a 3rd");
                     students.stream()
                             .filter(s -> s.modulesWMarks().values().stream().reduce(0, (subtotal, element) -> subtotal + element) >= 120)
+                            .filter(s -> s.modulesWMarks().values().stream().reduce(0, (subtotal, element) -> subtotal + element) < 150)
+
                             .forEach(System.out::println);
                     System.out.println("students who are failing");
                     students.stream()
@@ -228,6 +234,18 @@ public class Main {
                     break;
                 case (6):
                     //view students grouped by year
+                    System.out.println("students in their first year");
+                    students.stream()
+                            .filter(s -> s.yrOfStudy()==1)
+                            .forEach(System.out::println);
+                    System.out.println("students in their second year");
+                    students.stream()
+                            .filter(s -> s.yrOfStudy()==2)
+                            .forEach(System.out::println);
+                    System.out.println("students in their third year");
+                    students.stream()
+                            .filter(s -> s.yrOfStudy()==3)
+                            .forEach(System.out::println);
                     break;
                 case (7):
                     //add a student

@@ -95,6 +95,7 @@ public class Queries {
         return students;
     }
 
+
     public static List<StudentRecord> RemoveStudent(List<StudentRecord> students) {
         Scanner userInput = new Scanner(System.in);
         System.out.println("Enter Student Id of student you would like to remove");
@@ -110,14 +111,16 @@ public class Queries {
             case("Y"):
                 students.remove(StuID - 1);
                 System.out.println("Student removed");
-       break;
+                break;
             default:
-            System.out.println("Did not remove student");
-            break;
+                System.out.println("Did not remove student");
+                break;
         }
 
         return students;
     }
+
+
 
     public static Courses CourseToEnum() {
         Scanner userInput = new Scanner(System.in);
@@ -149,5 +152,49 @@ public class Queries {
         }
 
         return course;
+    }
+
+    public static void stuByGrades(List<StudentRecord> students){
+        System.out.println("students with a 1st");
+        students.stream()
+                .filter(s -> s.modulesWMarks().values().stream().reduce(0, (subtotal, element) -> subtotal + element) >= 210)
+                .forEach(System.out::println);
+        System.out.println("students with a 2:1");
+        students.stream()
+                .filter(s -> s.modulesWMarks().values().stream().reduce(0, (subtotal, element) -> subtotal + element) >= 180)
+                .filter(s -> s.modulesWMarks().values().stream().reduce(0, (subtotal, element) -> subtotal + element) < 210)
+
+                .forEach(System.out::println);
+        System.out.println("students with a 2:2");
+        students.stream()
+                .filter(s -> s.modulesWMarks().values().stream().reduce(0, (subtotal, element) -> subtotal + element) >= 150)
+                .filter(s -> s.modulesWMarks().values().stream().reduce(0, (subtotal, element) -> subtotal + element) < 180)
+
+                .forEach(System.out::println);
+        System.out.println("students with a 3rd");
+        students.stream()
+                .filter(s -> s.modulesWMarks().values().stream().reduce(0, (subtotal, element) -> subtotal + element) >= 120)
+                .filter(s -> s.modulesWMarks().values().stream().reduce(0, (subtotal, element) -> subtotal + element) < 150)
+
+                .forEach(System.out::println);
+        System.out.println("students who are failing");
+        students.stream()
+                .filter(s -> s.modulesWMarks().values().stream().reduce(0, (subtotal, element) -> subtotal + element) < 120)
+                .forEach(System.out::println);
+    }
+
+    public static void stuByYear(List<StudentRecord> students){
+        System.out.println("students in their first year");
+        students.stream()
+                .filter(s -> s.yrOfStudy()==1)
+                .forEach(System.out::println);
+        System.out.println("students in their second year");
+        students.stream()
+                .filter(s -> s.yrOfStudy()==2)
+                .forEach(System.out::println);
+        System.out.println("students in their third year");
+        students.stream()
+                .filter(s -> s.yrOfStudy()==3)
+                .forEach(System.out::println);
     }
 }

@@ -5,8 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class Main {
 
@@ -193,11 +191,11 @@ public class Main {
                     Courses courseEnum = Queries.CourseToEnum();
                     students.stream()
                             .filter(s -> s.courseName() == courseEnum)
-                            .sorted((p1, p2) -> (p1.modulesWMarks().values().stream().reduce(0, (subtotal, element) -> subtotal + element)).compareTo(p2.modulesWMarks().values().stream().reduce(0, (subtotal, element) -> subtotal + element)))
+                            .sorted((p1, p2) -> (p1.modulesWMarks().values().stream().reduce(0, (subtotal, element) -> subtotal + element))
+                                    .compareTo(p2.modulesWMarks().values().stream().reduce(0, (subtotal, element) -> subtotal + element)))
                             .forEach(System.out::println);
                     long count = students.stream()
                             .filter(s -> s.courseName() == courseEnum)
-                            .sorted((p1, p2) -> (p1.modulesWMarks().values().stream().reduce(0, (subtotal, element) -> subtotal + element)).compareTo(p2.modulesWMarks().values().stream().reduce(0, (subtotal, element) -> subtotal + element)))
                             .count();
                     System.out.println(count);
 

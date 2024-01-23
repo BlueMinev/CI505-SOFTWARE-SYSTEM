@@ -186,7 +186,7 @@ public class Queries {
     public static void stuByYear(List<StudentRecord> students){
         System.out.println("students in their first year");
         students.stream()
-                .filter(s -> s.yrOfStudy()==1)
+                .filter(yrOfStudy1)
                 .forEach(System.out::println);
         System.out.println("students in their second year");
         students.stream()
